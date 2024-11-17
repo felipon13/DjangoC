@@ -1,0 +1,26 @@
+{% extends "tiendaApp/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-8 offset-2">
+        <h2>Confirmar Eliminación de la cancha</h2>
+        <div class="alert alert-danger h3">
+            ¿Esta seguro que desea eliminar la cancha
+             <b>{{ cancha.nombre }} </b>?
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-dark" href="{% url 'detalleCancha' cancha.id %}">Cancelar</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger" type="submit">Confirmar Eliminar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock contenido %}

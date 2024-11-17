@@ -1,0 +1,51 @@
+{% extends "tiendaApp/base.html" %}
+{% load static %}
+
+
+{% block contenido %}
+  <div class="row">
+    <div class="col">
+        <h2>Mantenedor de Empleados</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <img src="{% static 'images/empleado.png' %}" alt="" 
+                    width="200" height="auto" >
+                    <label for="foto">Fotografia del Empleado</label>
+                    <input type="file" name="foto" class="form-control">
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.cancha.label_tag }}
+                    {{ form.cancha }}
+                    {{ form.cancha.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.horario.label_tag }}
+                    {{ form.horario }}
+                    {{ form.horario.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.fecha.label_tag }}
+                    {{ form.fecha }}
+                    {{ form.fecha.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="id_fechaNac">Fecha de Nacimiento</label>
+                    {{ form.fechaNac }}
+                    {{ form.fechaNac.errors }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary" href="{% url 'inicio' %}">Ir al Inicio</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+  </div>
+{% endblock contenido %}

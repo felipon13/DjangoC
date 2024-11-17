@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario Semanal</title>
+    <link rel="stylesheet" href="{% static 'css/horario.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="perfil">
+            <img src="{{ usuario.imagen_perfil }}" alt="Perfil" class="imagen-perfil">
+            <h2>{{ usuario.nombre }} ({{ usuario.rol }})</h2>
+        </div>
+        <div class="cancha">
+            <img src="{{ usuario.imagen_cancha }}" alt="Cancha" class="imagen-cancha">
+        </div>
+        <div class="horario">
+            <h3>Horario Semanal</h3>
+            <table>
+                <tr>
+                    <th>Día</th>
+                    <th>Estado</th>
+                </tr>
+                {% for dia in horario %}
+                <tr class="{% if dia.estado == 'Disponible' %}disponible{% else %}no-disponible{% endif %}">
+                    <td>{{ dia.dia }}</td>
+                    <td>{{ dia.estado }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="{% url 'inicio' %}" class="btn btn-primary mt-3">Volver</a>
+    </div>
+</body>
+</html>

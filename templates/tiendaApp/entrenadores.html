@@ -1,0 +1,82 @@
+{% extends "tiendaApp/base.html" %}
+
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <a class="btn btn-success" href="{% url 'entrenador' %}"><i class="bi bi-person-plus-fill"></i>Agregar entrenador</a>
+    </div>
+    <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control" placeholder="Buscar entrenador...">
+    </div>
+</div>
+
+  <div class="row">
+    <div class="col">
+        <table class="table table-dark table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>RUN</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Genero</th>
+                    <th>Especialidad</th>
+                    <th>Fecha Nac.</th>
+                    <th>Fotografia</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                {% for entrenador in entrenadores %}
+                <tr class="entrenador-row">
+                    <td>{{ entrenador.run }}</td>
+                    <td>{{ entrenador.nombre }}</td>
+                    <td>{{ entrenador.paterno }}</td>
+                    <td>{{ entrenador.materno }}</td>
+                    <td>{{ entrenador.sexo }}</td>
+                    <td>{{ entrenador.especialidad }}</td>
+                    <td>{{ entrenador.fechaNac }}</td>
+                    <td>
+                        {% if entrenador.foto %}
+                          <img src="{{ entrenador.foto.url }}" alt="fotito del entrenador" width="50" height="50">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'detalleEntrenador' entrenador.id %}" class="btn btn-sm btn-warning text-dark text-decoration-none">
+                            <i class="bi bi-eye"></i> Ver
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const rows = document.getElementsByClassName('entrenador-row');
+
+    searchInput.addEventListener('keyup', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        Array.from(rows).forEach(row => {
+            let text = '';
+            // Obtenemos el texto de las primeras 5 columnas
+            for(let i = 0; i < 7; i++) {
+                text += row.cells[i].textContent.toLowerCase() + ' ';
+            }
+            
+            if(text.includes(searchTerm)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+
+{% endblock contenido %}
+

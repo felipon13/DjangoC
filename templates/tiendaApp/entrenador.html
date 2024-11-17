@@ -1,0 +1,66 @@
+{% extends "tiendaApp/base.html" %}
+{% load static %}
+
+{% block contenido %}
+  <div class="row">
+    <div class="col">
+        <h2>Mantenedor de entrenadores</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <img src="{% static 'images/empleado.png' %}" alt="" 
+                    width="200" height="auto" >
+                    <label for="foto">Fotografia del entrenador</label>
+                    <input type="file" name="foto" class="form-control">
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.run.label_tag }}
+                    {{ form.run }}
+                    {{ form.run.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.nombre.label_tag }}
+                    {{ form.nombre }}
+                    {{ form.nombre.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.paterno.label_tag }}
+                    {{ form.paterno }}
+                    {{ form.paterno.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.materno.label_tag }}
+                    {{ form.materno }}
+                    {{ form.materno.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.sexo.label_tag }}
+                    {{ form.sexo }}
+                    {{ form.sexo.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.especialidad.label_tag }}
+                    {{ form.especialidad}}
+                    {{ form.especialidad.errors }}
+                </div>
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="id_fechaNac">Fecha de Nacimiento</label>
+                    {{ form.fechaNac }}
+                    {{ form.fechaNac.errors }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary" href="{% url 'inicio' %}">Ir al Inicio</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+  </div>
+{% endblock contenido %}

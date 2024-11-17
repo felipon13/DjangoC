@@ -1,0 +1,50 @@
+{% extends "tiendaApp/base.html" %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <a class="btn btn-success" href="{% url 'reserva' %}"><i class="bi bi-person-plus-fill"></i>Agregar Reserva</a>
+    </div>
+</div>
+
+  <div class="row">
+    <div class="col">
+        <table class="table table-dark table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Cancha</th>
+                    <th>Horario</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.cancha }}</td>
+                    <td>{{ reserva.horario }}</td>
+                    <td>{{ reserva.fecha }}</td>
+                    <td>
+                        {% if empleado.foto %}
+                          <img src="{{ empleado.foto.url }}" alt="" width="50" height="50">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'editarReserva' reserva.id %}">
+                            <i class="bi bi-pencil-square text-warning"></i>
+                        </a>  
+                        <a href="{% url 'reservaDel' reserva.id %}">
+                            <i class="bi bi-trash3-fill text-danger"></i>  
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+        
+    </div>
+  </div>
+{% endblock contenido %}
+

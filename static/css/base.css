@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4caf50, #00bcd4);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+
+
+/* Secciones coloridas */
+.bloque-colorido {
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    padding: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Encabezados */
+h1, h2, h3 {
+    color: #ffeb3b; /* Asegúrate de que sea un color contrastante */
+    font-size: 36px; /* Ajusta el tamaño según sea necesario */
+    text-align: center; /* Centra el título */
+    margin-top: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para que se destaque */
+}
+
+/* Específico para el título de la sección de ingreso de canchas */
+h2 {
+    font-size: 30px; /* Ajusta el tamaño si el título es <h2> */
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #f06595;
+}
+
+th {
+    background-color: #ff6b6b;
+}
+
+td.disponible {
+    background-color: #4caf50;
+    color: #ffffff;
+}
+
+td.no-disponible {
+    background-color: #e74c3c;
+    color: #ffffff;
+}
+
+/* Botones coloridos */
+.boton {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.boton:hover {
+    background-color: #2980b9;
+}
+
+/* Estilo para mensajes y alertas */
+.alerta {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.alerta-bienvenida {
+    background-color: #1abc9c;
+}
+
+.alerta-error {
+    background-color: #e74c3c;
+}
+
+/* Clases auxiliares */
+.texto-centrado {
+    text-align: center;
+}
+
+.margen-vertical {
+    margin: 20px 0;
+}
+

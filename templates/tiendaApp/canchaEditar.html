@@ -1,0 +1,70 @@
+    {% extends "tiendaApp/base.html" %}
+    {% load static %}
+
+    {% block contenido %}
+    <div class="container">
+        <h2 class="text-center my-4">Modificar Cancha</h2>
+        <form method="post" action="{% url 'canchaEditada' cancha.id %}"enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="row">
+                
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        {{ form.nombre.label_tag }}
+                        {{ form.nombre }}
+                        {{ form.nombre.errors }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.descripcion.label_tag }}
+                        {{ form.descripcion }}
+                        {{ form.descripcion.errors }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.tipo.label_tag }}
+                        {{ form.tipo }}
+                        {{ form.tipo.errors }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.capacidad.label_tag }}
+                        {{ form.capacidad }}
+                        {{ form.capacidad.errors }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.estado.label_tag }}
+                        {{ form.estado }}
+                        {{ form.estado.errors }}
+                    </div>
+                </div>
+                
+            
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="text-center">
+                        
+                        <img src="{{cancha.foto.url}}" alt="" width="500" height="auto">
+                        <p class="mt-2">Fotografía de la cancha</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <input type="file" name="foto" class="form-control">
+            </div>
+            
+            
+            <div class="row">
+                <div class="col text-start">
+                    <a class="btn btn-primary" href="{% url 'inicio' %}">Ir al Inicio</a>
+                </div>
+                <div class="col text-end">
+                    <button class="btn btn-warning" type="submit">Modificar</button>
+                </div>
+                <div class="col text-center">
+                    <a href="{% url 'canchaDel' cancha.id %}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endblock contenido %}
+
+                

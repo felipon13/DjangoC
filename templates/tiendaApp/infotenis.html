@@ -1,0 +1,33 @@
+{% extends "tiendaApp/base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+    <h2>Canchas de Tenis</h2>
+    
+    {% if canchas %}
+        <div class="row">
+            {% for cancha in canchas %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cancha.nombre }}</h5>
+                        {% if cancha.foto %}
+                            <img src="{{cancha.foto.url}}" alt="foto cancha" width="275" height="auto">
+                        {% endif %}
+                        <p class="card-text">{{ cancha.descripcion }}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Capacidad: {{ cancha.capacidad }}</li>
+                            <li class="list-group-item">Estado: {{ cancha.estado }}</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary mt-2">Reservar</a>
+                        <a href="{% url 'inicio' %}" class="btn btn-primary mt-2">Volver atrás</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No hay canchas de tenis disponibles.</p>
+    {% endif %}
+</div>
+{% endblock contenido %}

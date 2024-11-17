@@ -1,0 +1,32 @@
+{% extends "tiendaApp/base.html" %}
+
+{% block contenido %}
+<h2>Detalle del cliente</h2>
+<div class="container mt-4 justify-content-center">
+    <div class="card" style="max-width: 600px;">
+        <div class="card-body d-flex align-items-start ">
+            <!-- Columna para la imagen -->
+            {% if cliente.foto %}
+            <div class="me-4">
+                <img src="{{ cliente.foto.url }}" alt="foto cancha" width="200" height="200" class="rounded">
+            </div>
+            {% endif %}
+            
+            <!-- Columna para los detalles -->
+            <div>
+                <h5 class="card-title"><strong></strong>{{ cliente.nombre}}</h5>
+                <p class="card-text"><strong>Rut:</strong> {{ cliente.run}}</p>
+                <p class="card-text"><strong>Apellido paterno:</strong> {{ cliente.paterno }}</p>
+                <p class="card-text"><strong>Apellido materno:</strong> {{ cliente.materno }}</p>
+                <p class="card-text"><strong>Sexo:</strong> {{ cliente.sexo }}</p>
+                <p class="card-text"><strong>Fecha de Nacimiento</strong>{{cliente.fechaNac}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 d-flex justify-content-center gap-2">
+        <a href="{% url 'editarCliente' cliente.id %}" class="btn btn-primary">Modificar</a>
+        <a href="{% url 'clienteDel' cliente.id %}" class="btn btn-danger">Eliminar</a>
+        <a href="{% url 'clientes' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,47 @@
+{% extends "tiendaApp/base.html" %}
+{% load static %}
+
+
+{% block contenido %}
+  <div class="row">
+    <div class="col">
+        <h2>Mantenedor de Reserva</h2>
+        <form method="post" action="{% url 'reservaEditado' reserva.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ reserva.foto.url }}" alt="foto del empleado" 
+                    width="200" height="auto" >
+                    <label for="foto">Fotografia del Empleado</label>
+                    <input type="file" name="foto" class="form-control">
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.cancha.label_tag }}
+                    {{ form.cancha }}
+                    {{ form.cancha.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.horario.label_tag }}
+                    {{ form.horario }}
+                    {{ form.horario.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="id_fecha">Fecha de Solicitud</label>
+                    <input type="date" class="form-control" name="fecha" 
+                    value="{{ form.fecha.value|date:'Y-m-d' }}">
+                    {{ form.fecha.errors }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary" href="{% url 'inicio' %}">Ir al Inicio</a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-warning" type="submit">Modificar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+  </div>
+{% endblock contenido %}
