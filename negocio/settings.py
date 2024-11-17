@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-%#&ph6%((n-luhvczp@w*8$f3f+w6##pb7$jvg5o%cao#e)l==
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.86.51.17']
 
 #creacion de las rutas de redirrecionamiento para el inicio y cierre de sesion
 LOGIN_REDIRECT_URL = "/empleados/"
